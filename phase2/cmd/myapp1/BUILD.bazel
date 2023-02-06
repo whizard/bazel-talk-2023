@@ -1,4 +1,6 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("@io_bazel_rules_docker//go:image.bzl", "go_image")
+load("@io_bazel_rules_docker//container:container.bzl", "container_image", "container_push")
 
 go_library(
     name = "go_default_library",
@@ -12,4 +14,30 @@ go_binary(
     name = "myapp1",
     embed = [":go_default_library"],
     visibility = ["//visibility:public"],
+)
+
+go_image(
+    name = "go_image",
+    embed = [":go_default_library"],
+    goarch = "amd64",
+    goos = "linux",
+    importpath = "main",
+    visibility = ["//visibility:private"],
+)
+
+container_image(
+    name = "phase2_myapp1_image",
+    base = "@distroless_base//image",
+    entrypoint = ["/myapp1"],
+    files = [":go_image"],
+    ports = ["50051"],
+    repository = "docker.io/pmackay",
+)
+
+container_push(
+    name = "image_push",
+    format = "Docker",
+    image = ":go_image",
+    registry = "index.docker.io",
+    repository = "pmackay/bazel-talk-2023",
 )
