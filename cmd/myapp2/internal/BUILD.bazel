@@ -1,0 +1,8 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["app.go"],
+    importpath = "github.com/whizard/bazel-talk-2023/cmd/myapp2/internal",
+    visibility = ["//cmd/myapp2:__subpackages__"],
+)

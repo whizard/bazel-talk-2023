@@ -15,8 +15,8 @@ DARWIN = $(strip $(findstring DARWIN, $(OSUPPER)))
 
 .PHONY: update-project
 update-project: ## Update bazel cache based on go.mod files
-	bazel run //:gazelle
 	bazel run //:gazelle -- update-repos -from_file=go.mod
+	bazel run //:gazelle
 
 .PHONY: build
 build: update-project ## Build the binaries
