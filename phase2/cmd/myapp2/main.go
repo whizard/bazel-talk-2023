@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	app "github.com/whizard/bazel-talk-2023/cmd/myapp2/internal"
+	app "github.com/whizard/bazel-talk-2023/phase2/cmd/myapp2/internal"
 )
 
 func main() {

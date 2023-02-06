@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 go_library(
     name = "go_default_library",
     srcs = ["main.go"],
-    importpath = "github.com/whizard/bazel-talk-2023/cmd/myapp1",
+    importpath = "github.com/whizard/bazel-talk-2023/phase2/cmd/myapp1",
     visibility = ["//visibility:private"],
     deps = ["//cmd/myapp1/internal:go_default_library"],
 )

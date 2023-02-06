@@ -29,7 +29,7 @@ go_register_toolchains(version = "1.19.5")
 
 gazelle_dependencies(go_repository_default_config = "@//:WORKSPACE.bazel")
 
-# Docker
+# Container Images - Docker
 
 http_archive(
     name = "io_bazel_rules_docker",

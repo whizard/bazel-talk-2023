@@ -1,4 +1,4 @@
-# Some Useful Stuff For Using Bazel
+# Some Useful Stuff For Using BazelAs
 Here are basic and useful Bazel commands and other Bazel references.
 
 ## Bazel build
