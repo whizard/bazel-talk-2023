@@ -1,0 +1,17 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+load("@io_bazel_rules_go//go:def.bzl", "nogo")
+
+gazelle(name = "gazelle")
+
+# gazelle:proto disable_global
+# gazelle:prefix github.com/whizard/bazel-talk-2023
+# gazelle:go_naming_convention go_default_library
+gazelle(
+    name = "gazelle-update-repos",
+    args = [
+        "-from_file=go.mod",
+        "-to_macro=go_deps.bzl%go_dependencies",
+        "-prune",
+    ],
+    command = "update-repos",
+)
