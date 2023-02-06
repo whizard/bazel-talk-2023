@@ -10,7 +10,7 @@ query --keep_going
 build:memcheck --strip=never --test_timeout=3600
 
 # Specify a disk cache to the user's home directory. This could be remote as well.
-build --disk_cache=$HOME/tmp
+build --disk_cache=~/tmp/bazel
 
 # Enable go race detection.
 build:unit --features=race

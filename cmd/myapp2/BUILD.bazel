@@ -5,7 +5,7 @@ go_library(
     srcs = ["main.go"],
     importpath = "github.com/whizard/bazel-talk-2023/cmd/myapp2",
     visibility = ["//visibility:private"],
-    deps = ["//cmd/myapp1/internal:go_default_library"],
+    deps = ["//cmd/myapp2/internal:go_default_library"],
 )
 
 go_binary(
