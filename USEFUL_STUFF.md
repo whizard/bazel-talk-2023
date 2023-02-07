@@ -116,12 +116,6 @@ Run tests using Bazel
 bazel tests //...
 ```
 
-### List all affected test cases
-
-```
-bazel test `bazel query 'kind(".*_test rule", rdeps(set(//...), set(//java/com/systemlogic/sample:Hello.java java/com/webapp/deployment.yaml  java/com/webapp/index.html )))'`
-```
-
 ### List of affected test cases except failed ones.
 
 ```
@@ -142,7 +136,7 @@ To run a given built binary us the Bazel run command
 Executes a query on the post-analysis action graph.
 
 ```
-bazel aquery 'deps(//cmd:app1)'
+bazel aquery 'deps(//...)'
 ```
 
 ## Buildifier
