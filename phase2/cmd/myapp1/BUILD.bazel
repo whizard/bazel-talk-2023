@@ -39,5 +39,6 @@ container_push(
     image = ":image",
     registry = "index.docker.io",
     repository = "pmackay/bazel-talk-2023",
+    skip_unchanged_digest = True,
     tag_file = "image.json.sha256",
 )
