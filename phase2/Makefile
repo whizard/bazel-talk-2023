@@ -36,13 +36,13 @@ else
 	bazel test ... --test_arg=-test.short --features=pure --features=static --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64
 endif
 
-.PHONY: build-images
+.PHONY: build-image
 build-image: ## Builds container images
-	bazel run cmd/:myapp1/go_image
+	bazel run cmd/myapp1/image
 
-.PHONY: publish-images
-publish: build build-images ## Publish the images to the docker repo
-	bazel run cmd/
+.PHONY: push-image
+push-image: build-image ## Publish the images to the docker repo
+	bazel run cmd/myapp1/image_push
 
 .PHONY: tidy
 tidy:	## Update go.mod and go.sum

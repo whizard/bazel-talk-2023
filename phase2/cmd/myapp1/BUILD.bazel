@@ -16,28 +16,28 @@ go_binary(
     visibility = ["//visibility:public"],
 )
 
-go_image(
-    name = "go_image",
+go_binary(
+    name = "myapp1_linux",
     embed = [":go_default_library"],
     goarch = "amd64",
     goos = "linux",
-    importpath = "main",
-    visibility = ["//visibility:private"],
+    visibility = ["//visibility:public"],
 )
 
 container_image(
-    name = "phase2_myapp1_image",
+    name = "image",
     base = "@distroless_base//image",
-    entrypoint = ["/myapp1"],
-    files = [":go_image"],
-    ports = ["50051"],
-    repository = "docker.io/pmackay",
+    entrypoint = ["/myapp1_linux"],
+    files = [":myapp1_linux"],
+    ports = ["8080"],
+    repository = "docker.io/pmackay/bazel-talk-2023",
 )
 
 container_push(
     name = "image_push",
     format = "Docker",
-    image = ":go_image",
+    image = ":image",
     registry = "index.docker.io",
     repository = "pmackay/bazel-talk-2023",
+    tag_file = "image.json.sha256",
 )
