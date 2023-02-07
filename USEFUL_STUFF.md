@@ -1,5 +1,5 @@
 # Some Useful Stuff For Using BazelAs
-Here are basic and useful Bazel commands and other Bazel references.
+Here are some basic and useful Bazel commands.
 
 ## Bazel build
 
@@ -14,7 +14,7 @@ bazel build //...
 ### Build a specific package
 
 ```
-bazel build cmd/myapp1
+bazel build //cmd/myapp1
 ```
 
 ### Build a target for a given platform
@@ -38,7 +38,7 @@ bazel run //cmd/myapp1
 The command do update all of the BUILD.bazel files if imports change in a go file
 
 ```
-bazel run :gazelle --update-repos
+bazel run //:gazelle update-repos
 ```
 
 ## Bazel Query
@@ -53,10 +53,10 @@ bazel query cmd/myapp1/main.go
 ### Bazel query a target
 
 ```
-bazel query cmd/...
-bazel query cmd:myapp1
-bazel query cmd:myapp1/internal/app.go
-bazel query cmd:myapp2
+bazel query //cmd/...
+bazel query //cmd/myapp1
+bazel query //cmd/myapp1/internal/app.go
+bazel query //cmd/myapp2
 ```
 
 ### Bazel query all targets or of a package
@@ -114,13 +114,6 @@ Run tests using Bazel
 
 ```
 bazel tests //...
-```
-
-### List of affected test cases except failed ones.
-
-```
-bazel query 'kind(".*_test rule", rdeps(set(//...) )'
-
 ```
 
 ## Compute coverage

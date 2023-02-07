@@ -5,10 +5,13 @@ This repository contains the presentation:
 **Building Go Services With Bazel - Four Years Later**
 
 
-It was given to the Utah Go User'sM eetup on February 21, 2023.
+It was given at the Utah Go User's Meetup on February 21, 2023.
 
 ---
 ## Example Go Workspace
 
-This repository contains a Bazel workspace to build two simple go services. It also
-build container images for the services and pushes them to Dockerhub.
+This repository contains some examples of Bazel workspaces. The first workspace
+`phase1` demostrates how to build two simple go services. 
+
+The second workspace `phase2` demonstrates how to build container images
+for a simple go service and pushe it to Dockerhub.
